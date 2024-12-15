@@ -36,7 +36,7 @@ public class snowlauncher implements CommandExecutor {
             return true;
         }
 
-        // Créer l'item Snowball Launcher
+        // Create the Snowball Launcher
         ItemStack snowballLauncher = new ItemStack(Material.BLAZE_ROD);
         ItemMeta meta = snowballLauncher.getItemMeta();
 
@@ -46,16 +46,16 @@ public class snowlauncher implements CommandExecutor {
             meta.setLore(Arrays.asList(
                     ChatColor.DARK_PURPLE + "Left click to shoot!"
             ));
-            meta.setCustomModelData(MAX_USES); // Initialiser le nombre d'utilisations
+            meta.setCustomModelData(MAX_USES); // Set max uses
 
-            // Ajouter la balise personnalisée "snow"
+            // Add custom tag
             PersistentDataContainer data = meta.getPersistentDataContainer();
             data.set(new NamespacedKey(plugin, "snow"), PersistentDataType.STRING, "snow");
 
             snowballLauncher.setItemMeta(meta);
         }
 
-        // Donner l'item au joueur
+        // Give the item to the player
         player.getInventory().addItem(snowballLauncher);
         player.sendMessage(ChatColor.GREEN + "You received a Snowball Launcher!");
         return true;

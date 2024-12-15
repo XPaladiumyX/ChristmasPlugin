@@ -23,6 +23,7 @@ public class ChristmasPluginListener implements Listener {
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
 
+        // Vérifier si l'item est un Snowball Launcher
         if (item.getType() == Material.BLAZE_ROD && item.hasItemMeta()) {
             ItemMeta meta = item.getItemMeta();
 

@@ -7,3 +7,7 @@ commands:
   christmas:
     description: Main command for ChristmasPlugin.
     usage: /christmas snowlauncher
+permissions:
+  skyxnetwork.christmas.snowlauncher:
+    description: Permission to use the /christmas snowlauncher command.
+    default: false

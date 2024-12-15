@@ -14,7 +14,7 @@ public final class ChristmasPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Register the command without passing the main plugin instance
-        getCommand("christmas").setExecutor(new snowlauncher());
+        getCommand("christmas").setExecutor(new snowlauncher(this));
 
         // Register the listener
         getServer().getPluginManager().registerEvents(new ChristmasPluginListener(this), this);

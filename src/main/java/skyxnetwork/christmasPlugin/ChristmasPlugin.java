@@ -20,9 +20,10 @@ public final class ChristmasPlugin extends JavaPlugin {
         // Commands Registering
         getCommand("christmas").setExecutor(new ChristmasCommand(this));
         // Listeners Registering
+        getServer().getPluginManager().registerEvents(new skyxnetwork.christmasPlugin.SnowballListener(this), this);
         getServer().getPluginManager().registerEvents(new ChristmasPluginListener(this), this);
         getServer().getPluginManager().registerEvents(new ArmorListener(this), this);
-        getServer().getPluginManager().registerEvents(new SnowballDamageListener(), this);
+        getServer().getPluginManager().registerEvents(new SnowballDamageListener(this), this);
 
         Bukkit.getLogger().info(ANSI_LIGHT_GRAY + "︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹");
         Bukkit.getLogger().info(ANSI_MAGENTA + " _______  ___   _  __   __    __   __    __    _  _______  _______ " + ANSI_RESET);

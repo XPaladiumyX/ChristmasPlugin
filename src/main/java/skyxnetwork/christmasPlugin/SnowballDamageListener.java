@@ -29,19 +29,19 @@ public class SnowballDamageListener implements Listener {
         // Vérifie si l'attaque provient d'une boule de neige
         if (event.getDamager() instanceof Projectile projectile && projectile.getShooter() instanceof Player shooter) {
             // Vérifie que le projectile est bien une boule de neige
-            if (!(projectile.getName().equalsIgnoreCase("snowball"))) {
+            if (!projectile.getName().equalsIgnoreCase("snowball")) {
                 return;
             }
 
-            // Vérifie si le shooter a désactivé les messages
-            UUID shooterUUID = shooter.getUniqueId();
-            if (plugin.getMutedPlayers().contains(shooterUUID)) {
-                return; // N'affiche pas le message si le joueur a désactivé les messages
-            }
-
-            // Applique 0.1 point de dégâts et envoie le message
+            // Appliquer 0.1 point de dégâts (toujours, indépendamment du toggle)
             event.setDamage(0.1);
-            hitPlayer.sendMessage(ChatColor.RED + "You have been hit by a snowball!");
+
+            // Vérifie si le joueur tireur a désactivé les messages
+            UUID shooterUUID = shooter.getUniqueId();
+            if (!plugin.getMutedPlayers().contains(shooterUUID)) {
+                // Envoie le message uniquement si les messages ne sont pas désactivés
+                hitPlayer.sendMessage(ChatColor.RED + "You have been hit by a snowball!");
+            }
         }
     }
 }

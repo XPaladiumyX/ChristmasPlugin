@@ -26,17 +26,25 @@ public class snowlauncher implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // Vérifier si l'expéditeur est un joueur
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "This command is for players only!");
+            sender.sendMessage(ChatColor.RED + "Cette commande est réservée aux joueurs !");
             return true;
         }
 
+        // Vérifier si le joueur a la permission
+        if (!player.hasPermission("skyxnetwork.christmas.snowlauncher")) {
+            player.sendMessage(ChatColor.RED + "Vous n'avez pas la permission d'utiliser cette commande !");
+            return true;
+        }
+
+        // Vérifier l'argument de la commande
         if (args.length < 1 || !args[0].equalsIgnoreCase("snowlauncher")) {
-            player.sendMessage(ChatColor.RED + "Usage: /christmas snowlauncher");
+            player.sendMessage(ChatColor.RED + "Utilisation : /christmas snowlauncher");
             return true;
         }
 
-        // Create the Snowball Launcher
+        // Créer le lanceur de boules de neige
         ItemStack snowballLauncher = new ItemStack(Material.BLAZE_ROD);
         ItemMeta meta = snowballLauncher.getItemMeta();
 
@@ -46,18 +54,18 @@ public class snowlauncher implements CommandExecutor {
             meta.setLore(Arrays.asList(
                     ChatColor.DARK_PURPLE + "Left click to shoot!"
             ));
-            meta.setCustomModelData(MAX_USES); // Set max uses
+            meta.setCustomModelData(MAX_USES); // Définir le nombre d'utilisations max
 
-            // Add custom tag
+            // Ajouter un tag personnalisé
             PersistentDataContainer data = meta.getPersistentDataContainer();
             data.set(new NamespacedKey(plugin, "snow"), PersistentDataType.STRING, "snow");
 
             snowballLauncher.setItemMeta(meta);
         }
 
-        // Give the item to the player
+        // Donner l'item au joueur
         player.getInventory().addItem(snowballLauncher);
-        player.sendMessage(ChatColor.GREEN + "You received a Snowball Launcher!");
+        player.sendMessage(ChatColor.GREEN + "Vous avez reçu un Snowball Launcher !");
         return true;
     }
 }

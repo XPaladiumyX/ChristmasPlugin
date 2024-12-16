@@ -6,8 +6,14 @@ description: A Christmas-themed plugin adding a Snowball Launcher.
 commands:
   christmas:
     description: Main command for ChristmasPlugin.
-    usage: /christmas snowlauncher
+    usage: /christmas <snowlauncher | toggle | armor>
 permissions:
   skyxnetwork.christmas.snowlauncher:
     description: Permission to use the /christmas snowlauncher command.
+    default: false
+  skyxnetwork.christmas.toggle:
+    description: Permission to toggle snowball messages on or off.
+    default: true
+  skyxnetwork.christmas.armor:
+    description: Permission to use the /christmas armor command.
     default: false

@@ -83,7 +83,7 @@ public class ChristmasCommand implements CommandExecutor {
             ItemMeta meta = item.getItemMeta();
             if (meta instanceof org.bukkit.inventory.meta.LeatherArmorMeta leatherMeta) {
                 // Définir la couleur rouge
-                leatherMeta.setColor(org.bukkit.Color.RED);
+                leatherMeta.setColor(org.bukkit.Color.WHITE);
                 leatherMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
                 leatherMeta.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "Part of the Christmas Set"));
                 PersistentDataContainer data = leatherMeta.getPersistentDataContainer();

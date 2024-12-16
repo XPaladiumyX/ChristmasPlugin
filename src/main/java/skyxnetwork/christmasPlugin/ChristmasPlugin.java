@@ -2,6 +2,7 @@ package skyxnetwork.christmasPlugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import skyxnetwork.christmasPlugin.commands.ArmorCommand;
 import skyxnetwork.christmasPlugin.commands.ToggleSnowballMessageCommand;
 import skyxnetwork.christmasPlugin.commands.snowlauncher;
 
@@ -18,14 +19,14 @@ public final class ChristmasPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Register the command without passing the main plugin instance
+        // Commands Registering
         getCommand("christmas").setExecutor(new snowlauncher(this));
-        getCommand("christmas").setExecutor(new ToggleSnowballMessageCommand(this)); // Ajouter le toggle
-        // Register the listener
+        getCommand("christmas").setExecutor(new ToggleSnowballMessageCommand(this));
+        getCommand("christmas").setExecutor(new ArmorCommand(this));
+        // Listeners Registering
         getServer().getPluginManager().registerEvents(new ChristmasPluginListener(this), this);
-
+        getServer().getPluginManager().registerEvents(new ArmorListener(this), this);
         getServer().getPluginManager().registerEvents(new SnowballDamageListener(), this);
-        getServer().getPluginManager().registerEvents(new ChristmasPluginListener(this), this);
 
         Bukkit.getLogger().info(ANSI_LIGHT_GRAY + "︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹");
         Bukkit.getLogger().info(ANSI_MAGENTA + " _______  ___   _  __   __    __   __    __    _  _______  _______ " + ANSI_RESET);

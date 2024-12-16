@@ -3,6 +3,7 @@ package skyxnetwork.christmasPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -20,25 +21,29 @@ public class SnowballListener implements Listener {
     @EventHandler
     public void onSnowballHit(ProjectileHitEvent event) {
         // Vérifie si le projectile est une boule de neige
-        if (!(event.getEntity().getShooter() instanceof Player shooter)) {
+        if (!(event.getEntity() instanceof Snowball snowball)) {
             return;
         }
 
-        // Vérifie si le projectile est une boule de neige
-        if (!(event.getEntity() instanceof org.bukkit.entity.Snowball)) {
-            return; // Ignore si ce n'est pas une boule de neige
+        // Vérifie si le lanceur est un joueur
+        if (!(snowball.getShooter() instanceof Player shooter)) {
+            return;
         }
 
-        // Vérifie si le joueur est muté
+        // Vérifie si le lanceur a désactivé les messages
         UUID shooterUUID = shooter.getUniqueId();
         if (plugin.getMutedPlayers().contains(shooterUUID)) {
-            return; // Ne pas afficher le message si le joueur a désactivé les messages
+            return; // Ignore les messages si le joueur a désactivé les notifications
         }
 
-        // Envoie un message au joueur touché (si applicable)
+        // Récupère l'entité touchée
         Entity hitEntity = event.getHitEntity();
         if (hitEntity instanceof Player hitPlayer) {
+            // Envoie le message au lanceur
             shooter.sendMessage(ChatColor.GREEN + "You hit " + ChatColor.RED + hitPlayer.getName() + ChatColor.GREEN + " with a snowball!");
+
+            // Envoie le message au joueur touché
+            hitPlayer.sendMessage(ChatColor.RED + "You have been hit by a snowball!");
         }
     }
 }

@@ -28,19 +28,19 @@ public class snowlauncher implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Vérifier si l'expéditeur est un joueur
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "Cette commande est réservée aux joueurs !");
+            sender.sendMessage(ChatColor.RED + "This command is reserved for players!");
             return true;
         }
 
         // Vérifier si le joueur a la permission
         if (!player.hasPermission("skyxnetwork.christmas.snowlauncher")) {
-            player.sendMessage(ChatColor.RED + "Vous n'avez pas la permission d'utiliser cette commande !");
+            player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             return true;
         }
 
         // Vérifier l'argument de la commande
         if (args.length < 1 || !args[0].equalsIgnoreCase("snowlauncher")) {
-            player.sendMessage(ChatColor.RED + "Utilisation : /christmas snowlauncher");
+            player.sendMessage(ChatColor.RED + "Use: /christmas snowlauncher");
             return true;
         }
 
@@ -65,7 +65,7 @@ public class snowlauncher implements CommandExecutor {
 
         // Donner l'item au joueur
         player.getInventory().addItem(snowballLauncher);
-        player.sendMessage(ChatColor.GREEN + "Vous avez reçu un Snowball Launcher !");
+        player.sendMessage(ChatColor.GREEN + "You have received a Snowball Launcher!");
         return true;
     }
 }

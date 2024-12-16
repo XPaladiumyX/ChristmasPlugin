@@ -19,6 +19,9 @@ public final class ChristmasPlugin extends JavaPlugin {
         // Register the listener
         getServer().getPluginManager().registerEvents(new ChristmasPluginListener(this), this);
 
+        getServer().getPluginManager().registerEvents(new SnowballDamageListener(), this);
+        getServer().getPluginManager().registerEvents(new ChristmasPluginListener(this), this);
+
         Bukkit.getLogger().info(ANSI_LIGHT_GRAY + "︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹︹");
         Bukkit.getLogger().info(ANSI_MAGENTA + " _______  ___   _  __   __    __   __    __    _  _______  _______ " + ANSI_RESET);
         Bukkit.getLogger().info(ANSI_MAGENTA + "|       ||   | | ||  | |  |  |  |_|  |  |  |  | ||       ||       |" + ANSI_RESET);

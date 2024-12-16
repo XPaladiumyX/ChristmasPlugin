@@ -30,20 +30,21 @@ public class SnowballListener implements Listener {
             return;
         }
 
-        // Vérifie si le lanceur a désactivé les messages
-        UUID shooterUUID = shooter.getUniqueId();
-        if (plugin.getMutedPlayers().contains(shooterUUID)) {
-            return; // Ignore les messages si le joueur a désactivé les notifications
-        }
-
         // Récupère l'entité touchée
         Entity hitEntity = event.getHitEntity();
         if (hitEntity instanceof Player hitPlayer) {
-            // Envoie le message au lanceur
-            shooter.sendMessage(ChatColor.GREEN + "You hit " + ChatColor.RED + hitPlayer.getName() + ChatColor.GREEN + " with a snowball!");
 
-            // Envoie le message au joueur touché
-            hitPlayer.sendMessage(ChatColor.RED + "You have been hit by a snowball!");
+            // Envoie un message au lanceur, s'il n'a pas désactivé les messages
+            UUID shooterUUID = shooter.getUniqueId();
+            if (!plugin.getMutedPlayers().contains(shooterUUID)) {
+                shooter.sendMessage(ChatColor.GREEN + "You hit " + ChatColor.RED + hitPlayer.getName() + ChatColor.GREEN + " with a snowball!");
+            }
+
+            // Envoie un message au joueur touché, s'il n'a pas désactivé les messages
+            UUID hitPlayerUUID = hitPlayer.getUniqueId();
+            if (!plugin.getMutedPlayers().contains(hitPlayerUUID)) {
+                hitPlayer.sendMessage(ChatColor.RED + "You have been hit by a snowball!");
+            }
         }
     }
 }

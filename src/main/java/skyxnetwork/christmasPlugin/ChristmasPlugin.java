@@ -2,9 +2,7 @@ package skyxnetwork.christmasPlugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import skyxnetwork.christmasPlugin.commands.ArmorCommand;
-import skyxnetwork.christmasPlugin.commands.ToggleSnowballMessageCommand;
-import skyxnetwork.christmasPlugin.commands.snowlauncher;
+import skyxnetwork.christmasPlugin.commands.ChristmasCommand;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,9 +18,7 @@ public final class ChristmasPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Commands Registering
-        getCommand("christmas").setExecutor(new snowlauncher(this));
-        getCommand("christmas").setExecutor(new ToggleSnowballMessageCommand(this));
-        getCommand("christmas").setExecutor(new ArmorCommand(this));
+        getCommand("christmas").setExecutor(new ChristmasCommand(this));
         // Listeners Registering
         getServer().getPluginManager().registerEvents(new ChristmasPluginListener(this), this);
         getServer().getPluginManager().registerEvents(new ArmorListener(this), this);

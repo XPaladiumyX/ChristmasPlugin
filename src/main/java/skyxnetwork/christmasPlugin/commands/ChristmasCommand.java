@@ -74,16 +74,23 @@ public class ChristmasCommand implements CommandExecutor {
 
     private ItemStack createArmorPiece(Material material, String displayName) {
         ItemStack item = new ItemStack(material);
-        ItemMeta meta = item.getItemMeta();
 
-        if (meta != null) {
-            meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
-            meta.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "Part of the Christmas Set"));
-            PersistentDataContainer data = meta.getPersistentDataContainer();
-            data.set(new NamespacedKey(plugin, "christmas_armor"), PersistentDataType.STRING, "true");
-            item.setItemMeta(meta);
+        if (material == Material.LEATHER_HELMET ||
+                material == Material.LEATHER_CHESTPLATE ||
+                material == Material.LEATHER_LEGGINGS ||
+                material == Material.LEATHER_BOOTS) {
+
+            ItemMeta meta = item.getItemMeta();
+            if (meta instanceof org.bukkit.inventory.meta.LeatherArmorMeta leatherMeta) {
+                // Définir la couleur rouge
+                leatherMeta.setColor(org.bukkit.Color.RED);
+                leatherMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
+                leatherMeta.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "Part of the Christmas Set"));
+                PersistentDataContainer data = leatherMeta.getPersistentDataContainer();
+                data.set(new NamespacedKey(plugin, "christmas_armor"), PersistentDataType.STRING, "true");
+                item.setItemMeta(leatherMeta);
+            }
         }
-
         return item;
     }
 

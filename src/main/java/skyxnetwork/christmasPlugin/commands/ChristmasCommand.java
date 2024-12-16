@@ -83,7 +83,7 @@ public class ChristmasCommand implements CommandExecutor {
             ItemMeta meta = item.getItemMeta();
             if (meta instanceof org.bukkit.inventory.meta.LeatherArmorMeta leatherMeta) {
                 // Définir la couleur rouge
-                leatherMeta.setColor(org.bukkit.Color.WHITE);
+                leatherMeta.setColor(org.bukkit.Color.ORANGE);
                 leatherMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
                 leatherMeta.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "Part of the Christmas Set\nFull set Ability\nSneak to spawn a Christmas Snowman!"));
 

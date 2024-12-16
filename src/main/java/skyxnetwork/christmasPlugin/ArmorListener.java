@@ -71,10 +71,12 @@ public class ArmorListener implements Listener {
 
     private boolean isChristmasArmor(ItemStack item) {
         if (item == null || item.getType() == Material.AIR) return false;
+
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return false;
 
         PersistentDataContainer data = meta.getPersistentDataContainer();
-        return data.has(armorKey, PersistentDataType.STRING) && "true".equals(data.get(armorKey, PersistentDataType.STRING));
+        return data.has(armorKey, PersistentDataType.STRING) &&
+                "true".equals(data.get(armorKey, PersistentDataType.STRING));
     }
 }

@@ -86,8 +86,11 @@ public class ChristmasCommand implements CommandExecutor {
                 leatherMeta.setColor(org.bukkit.Color.WHITE);
                 leatherMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
                 leatherMeta.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "Part of the Christmas Set"));
+
+                // Ajouter un tag personnalisé via PersistentDataContainer
                 PersistentDataContainer data = leatherMeta.getPersistentDataContainer();
                 data.set(new NamespacedKey(plugin, "christmas_armor"), PersistentDataType.STRING, "true");
+
                 item.setItemMeta(leatherMeta);
             }
         }

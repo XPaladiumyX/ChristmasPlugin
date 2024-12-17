@@ -85,7 +85,13 @@ public class ChristmasCommand implements CommandExecutor {
                 // Définir la couleur rouge
                 leatherMeta.setColor(org.bukkit.Color.ORANGE);
                 leatherMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
-                leatherMeta.setLore(Arrays.asList(ChatColor.DARK_PURPLE + "Part of the Christmas Set\nFull set Ability\nSneak to spawn a Christmas Snowman!"));
+
+                // Définir la description (Lore) avec des lignes distinctes
+                leatherMeta.setLore(Arrays.asList(
+                        ChatColor.DARK_PURPLE + "Part of the Christmas Set",
+                        ChatColor.GOLD + "Full Set Ability:",
+                        ChatColor.GREEN + "Sneak to spawn a Christmas Snowman!"
+                ));
 
                 // Ajouter un tag personnalisé via PersistentDataContainer
                 PersistentDataContainer data = leatherMeta.getPersistentDataContainer();

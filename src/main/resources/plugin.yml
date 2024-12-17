@@ -1,5 +1,5 @@
 name: ChristmasPlugin
-version: '1.1-SNAPSHOT'
+version: '1.2-FINAL'
 main: skyxnetwork.christmasPlugin.ChristmasPlugin
 api-version: '1.20'
 description: A Christmas-themed plugin adding a Snowball Launcher.
